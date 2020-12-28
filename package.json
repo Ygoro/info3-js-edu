@@ -1,0 +1,30 @@
+{
+  "name": "info3-js-edu",
+  "version": "1.0.0",
+  "description": "Solutions of tasks given trough the Info3 JavaScript education",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch task1/scss -o task1/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ygoro/info3-js-edu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ygoro/info3-js-edu/issues"
+  },
+  "homepage": "https://github.com/Ygoro/info3-js-edu#readme",
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.1.0"
+  }
+}
