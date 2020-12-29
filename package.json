@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --watch task1/scss -o task1/css"
+    "scss-task1": "node-sass --watch task1/scss -o task1/css",
+    "scss-task2": "node-sass --watch task2/scss -o task2/css",
+    "scss-task3": "node-sass --watch task3/scss -o task3/css"
   },
   "repository": {
     "type": "git",
