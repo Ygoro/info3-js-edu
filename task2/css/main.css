@@ -1,6 +1,97 @@
-body {
-  background-color: #B9B9B9; }
+.results .btn-results, .btn-back, .btn-next {
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 44px;
+  text-align: center;
+  line-height: 1.1;
+  transition: 220ms all ease-in-out; }
+  .results .btn-results:hover, .btn-back:hover, .btn-next:hover {
+    opacity: 0.8;
+    cursor: pointer; }
 
-body, input, button {
-  font-family: 'Lato', sans-serif;
+body {
+  background-color: #b9b9b9; }
+
+body,
+input,
+button {
+  font-family: "Lato", sans-serif;
   margin: 0 auto; }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100vw; }
+  .container .navigation {
+    flex-basis: 10%; }
+  .container .questions {
+    flex-basis: 80%; }
+  .container-child.full-width {
+    flex-basis: 100%;
+    text-align: center; }
+
+.navigation,
+.questions {
+  height: 70vh;
+  margin: 3rem 0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18); }
+
+.navigation {
+  width: 50px;
+  margin-right: 2rem;
+  background-color: #e4e4e4; }
+
+.questions {
+  background-color: #e4e4e4; }
+
+.results .btn-results {
+  font-size: 28px;
+  background-color: #2b2b2b;
+  color: #fff; }
+
+.btn-next {
+  float: right; }
+
+.btn-back, .btn-next {
+  font-size: 16px;
+  background-color: #7c7c7c;
+  color: #fff;
+  margin: 1rem; }
+
+.question-box {
+  position: absolute;
+  height: inherit;
+  width: 80%; }
+  .question-box .question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    font-size: 28px; }
+
+.nav-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s; }
+  .nav-box:hover {
+    background-color: #7c7c7c;
+    color: #fff;
+    cursor: pointer; }
+  .nav-box > span {
+    font-size: 20px;
+    font-weight: bold; }
+
+.answers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px; }
+  .answers .answer {
+    text-align: center;
+    align-items: center; }
+    .answers .answer > span {
+      font-size: 20px; }
