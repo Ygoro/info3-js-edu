@@ -13,17 +13,26 @@
         <div class="controls">
             <div class="user-menu">
                 <div class="grid-size">
-                    <span>Choose square grid size (16-64): </span>
+                    <span>Square grid size<br>(16-64)</span>
                     <input type="number" id="grid" name="grid" value="16" min="16" max="64">
                 </div>
                 <div class="color-pick">
-                    <span>Choose a color:</span>
+                    <span>Color</span>
+                    <span class="random">Random</span>
+                    <div class="choose-own-color">
+                        <input type="checkbox" id="color-needed" name="color-needed">
+                        <label for="color-needed">Choose your color</label>
+                    </div>
                     <input type="color" id="color" name="color">
                 </div>
             </div>
         </div>
-        <button type="button" id="generate">Generate grid and draw</button>
-        <button type="button" id="reset">Reset all</button>
+        <div class="btn-generate">
+            <button type="button" id="generate">Generate grid and draw</button>
+        </div>
+        <div class="btn-reset">
+            <button type="button" id="reset">Reset all</button>
+        </div>
         <div class="drawing-panel"/>
     </div>
 
