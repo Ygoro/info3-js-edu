@@ -1,0 +1,27 @@
+// Placeholder for reused button styles
+%btn {
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+    padding: 0.25em 0.75em;
+    min-width: 10ch;
+    min-height: 44px;
+    text-align: center;
+    line-height: 1.1;
+    transition: 220ms all ease-in-out;
+
+    &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
+
+body {
+    background-color: #b9b9b9;
+}
+
+body,
+input,
+button {
+    font-family: "Lato", sans-serif;
+    margin: 0 auto;
+}
