@@ -130,6 +130,14 @@ button {
 
         & > span {
             font-size: 20px;
+            padding: 10%;
+            transition: 0.2s;
+
+            &:hover {
+                background-color: #7c7c7c;
+                color: #fff;
+                cursor: pointer;
+            }
         }
     }
 }

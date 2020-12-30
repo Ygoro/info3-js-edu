@@ -1,5 +1,12 @@
 "use strict";
 
+let answers = {
+    Q1: [],
+    Q2: [],
+    Q3: [],
+    Q4: [],
+}
+
 // Generates the transition between questions
 function transition($curr, $next) {
     $curr.css("z-index", 1).fadeOut("fast", function () {
@@ -16,7 +23,7 @@ function transition($curr, $next) {
 function toggleNextSlide() {
     let $curr = $(".question-box:visible"),
         $next = $curr.next().length ? $curr.next() : $(".question-box").first();
-    
+
     transition($curr, $next);
 }
 
@@ -30,13 +37,13 @@ function togglePreviousSlide() {
 
 // Dynamically generates quiz sidenavigation boxes
 function generateNavigation(questionAmount) {
-    for (let i=0; i < questionAmount; i++) {
-        $(".navigation").append("<div class='nav-box'><span>Q " + Number(i+1) + "</span></div>");
+    for (let i = 0; i < questionAmount; i++) {
+        $(".navigation").append("<div class='nav-box'><span>Q " + Number(i + 1) + "</span></div>");
     }
 
     // Calculates height of nav boxes (depends on the amount of questions)
-    let calculatedBoxHeight = 100 / questionAmount + '%';
-    $(".nav-box").css("height", calculatedBoxHeight)
+    let calculatedBoxHeight = 100 / questionAmount + "%";
+    $(".nav-box").css("height", calculatedBoxHeight);
 }
 
 function toggleSlideTroughNavigation() {
@@ -46,13 +53,13 @@ function toggleSlideTroughNavigation() {
 // Generates elements which symbolize answers of the quiz
 function generateAnswers() {
     let calculatedAnswerAmount = Number(2 + $(".question-box:visible").index());
-    for (let i=0; i < calculatedAnswerAmount; i++) {
-        $(".answers").append("<div class='answer'><span>Answer " + Number(i+1) + "</span></div>");
+    for (let j = 0; j < calculatedAnswerAmount; j++) {
+        $(".answers").append("<div class='answer'><span>Answer " + Number(j + 1) + "</span></div>");
     }
-
+    
     // Calculates width of answer elements (depends on the question index)
-    let answerWidth = 100 / calculatedAnswerAmount + '%';
-    $(".answer").css("width", answerWidth)
+    let answerWidth = 100 / calculatedAnswerAmount + "%";
+    $(".answer").css("width", answerWidth);
 }
 
 $(document).ready(function () {
@@ -64,14 +71,14 @@ $(document).ready(function () {
     generateNavigation(questionAmount);
     generateAnswers();
 
-    $(".btn-next").on("click", function() {
+    $(".btn-next").on("click", function () {
         // Removes initially set class on first slide
         $(".question-box:first-of-type()").removeClass("visible");
         toggleNextSlide();
         generateAnswers();
     });
 
-    $(".btn-back").on("click", function() {
+    $(".btn-back").on("click", function () {
         togglePreviousSlide();
         generateAnswers();
     });
