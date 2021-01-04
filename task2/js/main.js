@@ -41,12 +41,14 @@ function generateNavigation(questionAmount) {
 
 // Toggles jump to selected question
 function toggleSlideTroughNavigation(target) {
-    let $curr = $(".question-box:visible");
-
+    // todo handle onclick false when selected question is already visible (disable click)
     target[0].localName == "span" ? target = target.parent() : "";
-    let slideIndex = target.attr("class").split("box-")[1];
+
+    let slideIndex = target.attr("class").split("box-")[1].split("")[0];
+    let $curr = $(".question-box:visible"),
+        $next = $(".question-box.q" + slideIndex);
     
-    transition($curr, $(".question-box.q" + slideIndex));
+    transition($curr, $next);
 }
 
 // Generates elements which symbolize answers of the quiz
