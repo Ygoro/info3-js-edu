@@ -64,7 +64,9 @@ button {
 .question-box {
   position: absolute;
   height: inherit;
-  width: 80%; }
+  width: 80%;
+  height: 60%;
+  top: 15%; }
   .question-box .question {
     display: flex;
     justify-content: center;

@@ -1,12 +1,5 @@
 "use strict";
 
-let answers = {
-    Q1: [],
-    Q2: [],
-    Q3: [],
-    Q4: [],
-}
-
 // Generates the transition between questions
 function transition($curr, $next) {
     $curr.css("z-index", 1).fadeOut("fast", function () {
@@ -38,7 +31,7 @@ function togglePreviousSlide() {
 // Dynamically generates quiz sidenavigation boxes
 function generateNavigation(questionAmount) {
     for (let i = 0; i < questionAmount; i++) {
-        $(".navigation").append("<div class='nav-box'><span>Q " + Number(i + 1) + "</span></div>");
+        $(".navigation").append("<div class='nav-box box-" + Number(i + 1) + "'><span>Q " + Number(i + 1) + "</span></div>");
     }
 
     // Calculates height of nav boxes (depends on the amount of questions)
@@ -46,20 +39,45 @@ function generateNavigation(questionAmount) {
     $(".nav-box").css("height", calculatedBoxHeight);
 }
 
-function toggleSlideTroughNavigation() {
+// Toggles jump to selected question
+function toggleSlideTroughNavigation(target) {
+    let $curr = $(".question-box:visible");
 
+    target[0].localName == "span" ? target = target.parent() : "";
+    let slideIndex = target.attr("class").split("box-")[1];
+    
+    transition($curr, $(".question-box.q" + slideIndex));
 }
 
 // Generates elements which symbolize answers of the quiz
 function generateAnswers() {
     let calculatedAnswerAmount = Number(2 + $(".question-box:visible").index());
     for (let j = 0; j < calculatedAnswerAmount; j++) {
-        $(".answers").append("<div class='answer'><span>Answer " + Number(j + 1) + "</span></div>");
+        $(".answers").append("<div class='answer answ-" + Number(j + 1) + "'><span>Answer " + Number(j + 1) + "</span></div>");
     }
     
     // Calculates width of answer elements (depends on the question index)
     let answerWidth = 100 / calculatedAnswerAmount + "%";
     $(".answer").css("width", answerWidth);
+}
+
+// Toggles 'back' and 'next' button visibility on slides
+function toggleBtn() {
+    let firstSlide = $(".question-box:first-of-type()");
+    let lastSlide = $(".question-box:last-of-type()")
+    if (firstSlide.hasClass("visible")) {
+        $(".btn-back").hide();
+        $(".btn-next").show();
+        console.log("prvi")
+    } else if (lastSlide.hasClass("visible")) {
+        $(".btn-back").show();
+        $(".btn-next").hide();
+        console.log("zadnji")
+    } else {
+        $(".btn-back").show();
+        $(".btn-next").show();
+        console.log("sve ostalo")
+    }
 }
 
 $(document).ready(function () {
@@ -70,18 +88,24 @@ $(document).ready(function () {
     let questionAmount = $(".question-box").length;
     generateNavigation(questionAmount);
     generateAnswers();
+    toggleBtn();
+
+    $(".btn-back").on("click", function () {
+        togglePreviousSlide();
+        generateAnswers();
+        toggleBtn();
+    });
 
     $(".btn-next").on("click", function () {
         // Removes initially set class on first slide
         $(".question-box:first-of-type()").removeClass("visible");
         toggleNextSlide();
         generateAnswers();
+        toggleBtn();
     });
 
-    $(".btn-back").on("click", function () {
-        togglePreviousSlide();
-        generateAnswers();
+    $(".nav-box").on("click", function (e) {
+        let target = $(e.target);
+        toggleSlideTroughNavigation(target)
     });
-
-    $(".nav-box").on("click", toggleSlideTroughNavigation);
 });
